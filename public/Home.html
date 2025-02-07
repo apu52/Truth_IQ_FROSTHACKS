@@ -418,6 +418,11 @@
         </div>
     </footer>
 
+    <button id="scrollToTop" class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+        <span class="hover-text">To Top</span>
+    </button>
+
     <script>
         
         document.querySelectorAll('.footer-links a').forEach(link => {
@@ -464,6 +469,45 @@
                     this.style.setProperty('--mouse-x', x + 'px');
                     this.style.setProperty('--mouse-y', y + 'px');
                 });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            let isScrolling = false;
+        
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', () => {
+                if (!isScrolling) {
+                    window.requestAnimationFrame(() => {
+                        if (window.pageYOffset > 300) {
+                            scrollToTopBtn.classList.add('visible');
+                            // Add pulse animation when button first appears
+                            scrollToTopBtn.classList.add('pulse');
+                            setTimeout(() => {
+                                scrollToTopBtn.classList.remove('pulse');
+                            }, 2000);
+                        } else {
+                            scrollToTopBtn.classList.remove('visible');
+                        }
+                        isScrolling = false;
+                    });
+                    isScrolling = true;
+                }
+            });
+        
+            
+            scrollToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        
+            
+            scrollToTopBtn.addEventListener('mouseenter', () => {
+                scrollToTopBtn.classList.remove('pulse');
             });
         });
     </script>
