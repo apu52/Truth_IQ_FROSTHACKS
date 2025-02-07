@@ -100,6 +100,111 @@
                 <button type="submit" class="upload-btn">Upload Resume</button>
             </form>
         </div>
+        <button id="screeningBtn" class="upload-btn" style="display: none;">
+            See Your Resume Screening Score
+        </button>
+
+        <div id="scoreContainer" class="score-container">
+            <h3>Resume Screening Results</h3>
+            
+            <div class="score-circle">
+                <span>85%</span>
+            </div>
+
+            <h4 style="margin: 1rem 0;">Skills Match</h4>
+            <div class="skills-match">
+                <div style="flex: 1; padding: 0 1rem;">
+                    <div>Python</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div style="flex: 1; padding: 0 1rem;">
+                    <div>Machine Learning</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('resumeFile');
+        const form = document.getElementById('resumeForm');
+        const screeningBtn = document.getElementById('screeningBtn');
+        const scoreContainer = document.getElementById('scoreContainer');
+
+        // Drag and drop functionality
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.background = 'rgba(100, 255, 218, 0.1)';
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.style.background = 'transparent';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.background = 'transparent';
+            const file = e.dataTransfer.files[0];
+            handleFile(file);
+        });
+
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            handleFile(file);
+        });
+
+        function handleFile(file) {
+            if (file) {
+                dropZone.innerHTML = `
+                    <i class="fas fa-file-alt"></i>
+                    <p>${file.name}</p>
+                    <small style="color: #8892b0;">Click to change file</small>
+                `;
+            }
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate upload process
+            const uploadBtn = form.querySelector('button[type="submit"]');
+            uploadBtn.textContent = 'Uploading...';
+            
+            setTimeout(() => {
+                uploadBtn.textContent = 'Upload Complete!';
+                screeningBtn.style.display = 'block';
+                form.reset();
+                dropZone.innerHTML = `
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & Drop your resume or click to browse</p>
+                    <small style="color: #8892b0;">Supported formats: PDF, DOC, DOCX</small>
+                `;
+            }, 2000);
+        });
+
+        screeningBtn.addEventListener('click', () => {
+            scoreContainer.style.display = 'block';
+            screeningBtn.style.display = 'none';
+            
+            // Animate progress bars
+            const progressBars = document.querySelectorAll('.progress');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+    </script>
     </main>
 </body>
 </html>
