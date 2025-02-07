@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="Home.css">
     
 </head>
@@ -16,14 +18,26 @@
     <nav class="navbar">
         <div class="logo">TruthIQ</div>
         <div class="nav-links">
+            <a href="#home">Home</a>
             <a href="#about">About us</a>
             <a href="#features">Our Features</a>
             <a href="#solutions">Solutions</a>
-            <a href="#testimonials">Testimoniaks</a>
+            <a href="#testimonials">Testimonials</a>
             <a href="#contactus">Contact Us</a>
-            <a href="#about">About</a>
         </div>
-        <button class="login-btn">Login</button>
+        <div class="login-container">
+            <button class="login-btn">Login</button>
+            <div class="login-dropdown">
+                <a href="#" class="dropdown-item">
+                    <i class="fas fa-building"></i>
+                    Login as Company
+                </a>
+                <a href="login.html" class="dropdown-item">
+                    <i class="fas fa-user"></i>
+                    Login as Applicant
+                </a>
+            </div>
+        </div>
     </nav>
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -33,11 +47,33 @@
                     .scrollIntoView({ behavior: 'smooth' });
             });
         });
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.querySelector('.login-btn');
+            const loginDropdown = document.querySelector('.login-dropdown');
+        
+            
+            loginBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                loginDropdown.classList.toggle('active');
+            });
+        
+            
+            document.addEventListener('click', function(e) {
+                if (!loginDropdown.contains(e.target) && !loginBtn.contains(e.target)) {
+                    loginDropdown.classList.remove('active');
+                }
+            });
+        
+            
+            loginDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
     </script> 
     
 
     <!-- Hero Section -->
-    <body class="relative min-h-screen flex items-center justify-center">
+    <body id="home" class="relative min-h-screen flex items-center justify-center">
     <div class="hero-bg"></div>
     <section class="hero-section relative z-10 flex items-center justify-center text-center pt-24 pb-16">
         <div class="container mx-auto px-6">
@@ -324,37 +360,53 @@
         </form>
     </section>
 
-    <footer>
-        <div class="footer">
+    <footer id="footer" class="footer">
+        <div class="footer-container">
             <div>
                 <div class="footer-logo">TruthIQ</div>
                 <p class="footer-description">
                     Transforming data into actionable insights with cutting-edge analytics solutions.
                 </p>
                 <div class="social-links">
-                    <a href="#" class="social-icon">LinkedIn</a>
-                    <a href="#" class="social-icon">Twitter</a>
-                    <a href="#" class="social-icon">GitHub</a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                        
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                        
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                        
+                    </a>
                 </div>
             </div>
             <div>
                 <h3 class="footer-section-title">Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Solutions</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contactus">Contact</a></li>
+                    <li><a href="#testimonials">Contact</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="footer-section-title">Contact</h3>
                 <div class="contact-info">
-                    <p>📞 +1 (555) 123-4567</p>
-                    <p>✉️ support@truthiq.com</p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        +1 (555) 123-4567
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        support@truthiq.com
+                    </p>
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.733248043236!2d-118.24532742400904!3d34.05217987241156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c7b85dea2a93%3A0x1ff47c3ceb7bb2d5!2sSanta%20Monica%2C%20CA%2C%20USA!5e0!3m2!1sen!2sus!4v1697036400000!5m2!1sen!2sus" 
                         class="google-map" 
-                        style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy">
                     </iframe>
@@ -365,6 +417,32 @@
             © 2024 TruthIQ. All Rights Reserved.
         </div>
     </footer>
+
+    <script>
+        
+        document.querySelectorAll('.footer-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href').substring(1);
+                const element = document.getElementById(href);
+                if (element) {
+                    element.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+       
+        document.querySelectorAll('.social-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'translateY(-2px)';
+            });
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
