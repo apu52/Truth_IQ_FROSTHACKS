@@ -6,7 +6,6 @@
     <title>TruthIQ - Resume Upload</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="resume_apply.css">
-    
 </head>
 <body>
     <nav>
@@ -14,18 +13,11 @@
             <i class="fas fa-brain"></i>
             TruthIQ
         </div>
-        <div class="nav-items">
-            <div class="notification-badge">
-                <i class="fas fa-bell nav-icon"></i>
-                <span class="badge">2</span>
-            </div>
-            <i class="fas fa-user nav-icon"></i>
-        </div>
     </nav>
 
     <main>
         <div class="upload-container">
-            <h2 style="margin-bottom: 2rem; color: var(--accent);">Upload Your Resume</h2>
+            <h2 class="resume-title">Upload Your Resume</h2>
             
             <form id="resumeForm">
                 <div class="form-group">
@@ -34,150 +26,80 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" required placeholder="Enter your email">
+                    <label>Degree</label>
+                    <input type="text" required placeholder="Enter your degree">
                 </div>
 
                 <div class="form-group">
-                    <label>Phone</label>
-                    <input type="tel" required placeholder="Enter your phone number">
+                    <label>University</label>
+                    <input type="text" required placeholder="Enter your university">
                 </div>
 
                 <div class="form-group">
-                    <label>Current Role</label>
-                    <input type="text" required placeholder="e.g. Software Engineer">
+                    <label>GPA</label>
+                    <input type="number" step="0.01" required placeholder="Enter your GPA">
                 </div>
 
                 <div class="form-group">
-                    <label>Experience Level</label>
-                    <select required>
-                        <option value="">Select experience level</option>
-                        <option value="entry">Entry Level (0-2 years)</option>
-                        <option value="mid">Mid Level (3-5 years)</option>
-                        <option value="senior">Senior Level (5+ years)</option>
-                    </select>
+                    <label>Year of Graduation</label>
+                    <input type="number" required placeholder="Enter graduation year">
                 </div>
 
                 <div class="form-group">
-                    <label>Key Skills (comma separated)</label>
-                    <input type="text" placeholder="e.g. Python, JavaScript, React">
+                    <label>Number of Years, Job Titles, Industries, Company Names</label>
+                    <textarea required placeholder="Enter details separated by commas"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Technical Skills</label>
+                    <input type="text" required placeholder="e.g. Python, ML, Java">
+                </div>
+
+                <div class="form-group">
+                    <label>Soft Skills</label>
+                    <input type="text" required placeholder="e.g. Communication, Leadership">
+                </div>
+
+                <div class="form-group">
+                    <label>Certifications & Courses</label>
+                    <input type="url" required placeholder="Enter relevant URLs">
+                </div>
+
+                <div class="form-group">
+                    <label>Research Papers</label>
+                    <input type="url" required placeholder="Enter URLs">
+                </div>
+
+                <div class="form-group">
+                    <label>Patents</label>
+                    <input type="url" required placeholder="Enter URLs">
+                </div>
+
+                <div class="form-group">
+                    <label>Open-Source Contributions</label>
+                    <input type="url" required placeholder="Enter URLs">
+                </div>
+
+                <div class="form-group">
+                    <label>Awards</label>
+                    <input type="text" required placeholder="Enter awards separated by commas">
+                </div>
+
+                <div class="form-group">
+                    <label>Recognitions</label>
+                    <input type="text" required placeholder="Enter recognitions separated by commas">
                 </div>
 
                 <div class="file-upload" id="dropZone">
                     <input type="file" id="resumeFile" hidden accept=".pdf,.doc,.docx">
                     <i class="fas fa-cloud-upload-alt"></i>
                     <p>Drag & Drop your resume or click to browse</p>
-                    <small style="color: #8892b0;">Supported formats: PDF, DOC, DOCX</small>
+                    <small>Supported formats: PDF, DOC, DOCX</small>
                 </div>
 
                 <button type="submit" class="upload-btn">Upload Resume</button>
             </form>
         </div>
-
-        <button id="screeningBtn" class="upload-btn" style="display: none;">
-            See Your Resume Screening Score
-        </button>
-
-        <div id="scoreContainer" class="score-container">
-            <h3>Resume Screening Results</h3>
-            
-            <div class="score-circle">
-                <span>85%</span>
-            </div>
-
-            <h4 style="margin: 1rem 0;">Skills Match</h4>
-            <div class="skills-match">
-                <div style="flex: 1; padding: 0 1rem;">
-                    <div>Python</div>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
-                    </div>
-                </div>
-                <div style="flex: 1; padding: 0 1rem;">
-                    <div>Machine Learning</div>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 75%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
-
-    <script>
-        const dropZone = document.getElementById('dropZone');
-        const fileInput = document.getElementById('resumeFile');
-        const form = document.getElementById('resumeForm');
-        const screeningBtn = document.getElementById('screeningBtn');
-        const scoreContainer = document.getElementById('scoreContainer');
-
-        // Drag and drop functionality
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.style.background = 'rgba(100, 255, 218, 0.1)';
-        });
-
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.style.background = 'transparent';
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.style.background = 'transparent';
-            const file = e.dataTransfer.files[0];
-            handleFile(file);
-        });
-
-        dropZone.addEventListener('click', () => {
-            fileInput.click();
-        });
-
-        fileInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            handleFile(file);
-        });
-
-        function handleFile(file) {
-            if (file) {
-                dropZone.innerHTML = `
-                    <i class="fas fa-file-alt"></i>
-                    <p>${file.name}</p>
-                    <small style="color: #8892b0;">Click to change file</small>
-                `;
-            }
-        }
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Simulate upload process
-            const uploadBtn = form.querySelector('button[type="submit"]');
-            uploadBtn.textContent = 'Uploading...';
-            
-            setTimeout(() => {
-                uploadBtn.textContent = 'Upload Complete!';
-                screeningBtn.style.display = 'block';
-                form.reset();
-                dropZone.innerHTML = `
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p>Drag & Drop your resume or click to browse</p>
-                    <small style="color: #8892b0;">Supported formats: PDF, DOC, DOCX</small>
-                `;
-            }, 2000);
-        });
-
-        screeningBtn.addEventListener('click', () => {
-            scoreContainer.style.display = 'block';
-            screeningBtn.style.display = 'none';
-            
-            // Animate progress bars
-            const progressBars = document.querySelectorAll('.progress');
-            progressBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
-            });
-        });
-    </script>
 </body>
 </html>
