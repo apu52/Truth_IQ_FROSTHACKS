@@ -545,3 +545,74 @@ section {
     }
 }
 
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background-color: #3490dc;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background-color: #2779bd;
+    width: 125px;
+    border-radius: 25px;
+}
+
+.scroll-to-top .hover-text {
+    position: absolute;
+    right: 45px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-to-top:hover .hover-text {
+    opacity: 1;
+}
+
+.scroll-to-top:hover i {
+    transform: translateX(-40px);
+}
+
+.scroll-to-top i {
+    transition: transform 0.3s ease;
+}
+
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(52, 144, 220, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(52, 144, 220, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(52, 144, 220, 0);
+    }
+}
+
+.scroll-to-top.pulse {
+    animation: pulse 2s infinite;
+}
+
