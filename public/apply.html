@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthIQ - Smart Resume Screening</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="apply.css">
+    
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            TruthIQ
+        </div>
+        <div class="nav-items">
+            <div class="notification-badge">
+                <i class="fas fa-bell nav-icon"></i>
+                <span class="badge">5</span>
+            </div>
+            <i class="fas fa-bookmark nav-icon"></i>
+            <i class="fas fa-user nav-icon"></i>
+        </div>
+    </nav>
+
+    <main>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for jobs..." id="searchInput">
+            <input type="text" placeholder="Location">
+            <select style="background: rgba(255, 255, 255, 0.05); color: var(--text); padding: 0.8rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                <option value="">Experience Level</option>
+                <option value="entry">Entry Level</option>
+                <option value="mid">Mid Level</option>
+                <option value="senior">Senior Level</option>
+            </select>
+            <button class="apply-btn" style="width: auto;">Search</button>
+        </div>
+
+        <div class="filters">
+            <div class="filter-chip active">All Jobs</div>
+            <div class="filter-chip">Remote</div>
+            <div class="filter-chip">Full Time</div>
+            <div class="filter-chip">Contract</div>
+            <div class="filter-chip">Featured</div>
+        </div>
+
+        <div class="job-grid" id="jobGrid"></div>
+    </main>
+
+    <script>
+        const jobs = [
+            {
+                icon: 'fa-google',
+                title: 'Senior Software Engineer',
+                company: 'Google',
+                openings: 8,
+                applicants: 342,
+                location: 'Mountain View, CA',
+                experience: '5+ years',
+                salary: '$150,000 - $250,000',
+                tags: ['Python', 'Cloud', 'Machine Learning'],
+                description: 'Join our core engineering team to build next-generation cloud solutions.',
+                featured: true,
+                type: 'full time',
+                isRemote: false
+            },
+            {
+                icon: 'fa-amazon',
+                title: 'ML Engineer',
+                company: 'Amazon',
+                openings: 5,
+                applicants: 289,
+                location: 'Seattle, Remote',
+                experience: '3+ years',
+                salary: '$140,000 - $220,000',
+                tags: ['Python', 'TensorFlow', 'AWS'],
+                description: 'Work on cutting-edge machine learning solutions for AWS services.',
+                featured: false,
+                type: 'contract',
+                isRemote: true
+            },
+            {
+                icon: 'fa-microsoft',
+                title: 'Full Stack Developer',
+                company: 'Microsoft',
+                openings: 6,
+                applicants: 256,
+                location: 'Redmond, WA',
+                experience: '4+ years',
+                salary: '$130,000 - $210,000',
+                tags: ['React', 'Node.js', 'Azure'],
+                description: 'Build modern web applications using the latest technologies.',
+                featured: false,
+                type: 'full time',
+                isRemote: false
+            },
+            {
+                icon: 'fa-apple',
+                title: 'iOS Developer',
+                company: 'Apple',
+                openings: 4,
+                applicants: 198,
+                location: 'Remote',
+                experience: '3+ years',
+                salary: '$140,000 - $230,000',
+                tags: ['Swift', 'iOS', 'XCode'],
+                description: 'Create innovative mobile experiences for Apple platforms.',
+                featured: true,
+                type: 'full time',
+                isRemote: true
+            },
+            {
+                icon: 'fa-meta',
+                title: 'AR/VR Engineer',
+                company: 'Meta',
+                openings: 7,
+                applicants: 167,
+                location: 'Menlo Park, CA',
+                experience: '4+ years',
+                salary: '$160,000 - $240,000',
+                tags: ['Unity', 'C++', 'Computer Vision'],
+                description: 'Shape the future of virtual and augmented reality experiences.',
+                featured: false,
+                type: 'contract',
+                isRemote: false
+            },
+            {
+                icon: 'fa-netflix',
+                title: 'Platform Engineer',
+                company: 'Netflix',
+                openings: 3,
+                applicants: 223,
+                location: 'Remote',
+                experience: '5+ years',
+                salary: '$170,000 - $260,000',
+                tags: ['Java', 'Microservices', 'AWS'],
+                description: 'Build and scale our streaming platform infrastructure.',
+                featured: true,
+                type: 'full time',
+                isRemote: true
+            }
+        ];
+        
+        function createJobCards() {
+            const jobGrid = document.getElementById('jobGrid');
+            jobGrid.innerHTML = '';
+            
+            jobs.forEach(job => {
+                const card = document.createElement('div');
+                card.className = `job-card ${job.featured ? 'featured' : ''}`;
+                card.innerHTML = `
+                    <div class="company-logo">
+                        <i class="fab ${job.icon} fa-lg"></i>
+                    </div>
+                    <h3 class="job-title">${job.title}</h3>
+                    <p class="company">
+                        <i class="fas fa-building"></i>
+                        ${job.company}
+                    </p>
+                    <p class="salary-range">
+                        <i class="fas fa-money-bill-wave"></i>
+                        ${job.salary}
+                    </p>
+                    <div class="stats">
+                        <span><i class="fas fa-users"></i> ${job.openings} openings</span>
+                        <span><i class="fas fa-user-friends"></i> ${job.applicants} applicants</span>
+                    </div>
+                    <div class="stats">
+                        <span><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+                        <span><i class="fas fa-briefcase"></i> ${job.experience}</span>
+                    </div>
+                    <p class="job-description">${job.description}</p>
+                    <div class="tags">
+                        ${job.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <button class="apply-btn" onclick="window.location.href='resume_apply.html'">Apply Now</button>
+
+                    
+                `;
+                jobGrid.appendChild(card);
+            });
+        
+            // Add hover effects
+            document.querySelectorAll('.job-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-5px)';
+                    card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+                });
+        
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = 'none';
+                });
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            createJobCards();
+            
+            // Filter functionality
+            const filterChips = document.querySelectorAll('.filter-chip');
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    filterChips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    
+                    const filterType = chip.textContent.toLowerCase();
+                    const jobCards = document.querySelectorAll('.job-card');
+                    
+                    jobCards.forEach(card => {
+                        const job = jobs[Array.from(jobGrid.children).indexOf(card)];
+                        
+                        let shouldDisplay = true;
+                        switch(filterType) {
+                            case 'all jobs':
+                                shouldDisplay = true;
+                                break;
+                            case 'featured':
+                                shouldDisplay = job.featured;
+                                break;
+                            case 'remote':
+                                shouldDisplay = job.isRemote;
+                                break;
+                            case 'full time':
+                                shouldDisplay = job.type === 'full time';
+                                break;
+                            case 'contract':
+                                shouldDisplay = job.type === 'contract';
+                                break;
+                        }
+                        
+                        card.style.display = shouldDisplay ? 'block' : 'none';
+                        
+                        if (shouldDisplay) {
+                            card.style.animation = 'pulse 0.5s';
+                            setTimeout(() => {
+                                card.style.animation = '';
+                            }, 500);
+                        }
+                    });
+                });
+            });
+        
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const jobCards = document.querySelectorAll('.job-card');
+                
+                jobCards.forEach(card => {
+                    const title = card.querySelector('.job-title').textContent.toLowerCase();
+                    const company = card.querySelector('.company').textContent.toLowerCase();
+                    const description = card.querySelector('.job-description').textContent.toLowerCase();
+                    const tags = Array.from(card.querySelectorAll('.tag'))
+                        .map(tag => tag.textContent.toLowerCase());
+                    
+                    const matches = title.includes(searchTerm) || 
+                                  company.includes(searchTerm) || 
+                                  description.includes(searchTerm) ||
+                                  tags.some(tag => tag.includes(searchTerm));
+                    
+                    card.style.display = matches ? 'block' : 'none';
+                });
+            });
+        
+            // Apply button functionality
+            document.querySelectorAll('.apply-btn').forEach((btn, index) => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const job = jobs[index];
+                    alert(`Application started for ${job.title} at ${job.company}!`);
+                });
+            });
+        
+            // Experience filter
+            const experienceSelect = document.querySelector('select');
+            experienceSelect.addEventListener('change', () => {
+                const selectedLevel = experienceSelect.value.toLowerCase();
+                const jobCards = document.querySelectorAll('.job-card');
+                
+                jobCards.forEach(card => {
+                    if (selectedLevel === '') {
+                        card.style.display = 'block';
+                        return;
+                    }
+                    
+                    const experience = card.querySelector('.stats').textContent.toLowerCase();
+                    card.style.display = experience.includes(selectedLevel) ? 'block' : 'none';
+                });
+            });
+        });
+        </script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthIQ - AI Recruitment Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Home.css">
+    
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navbar -->
+    
+    <nav class="navbar">
+        <div class="logo">TruthIQ</div>
+        <div class="nav-links">
+            <a href="#about">About us</a>
+            <a href="#features">Our Features</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#testimonials">Testimoniaks</a>
+            <a href="#contactus">Contact Us</a>
+            <a href="#about">About</a>
+        </div>
+        <button class="login-btn">Login</button>
+    </nav>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))
+                    .scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script> 
+    
+
+    <!-- Hero Section -->
+    <body class="relative min-h-screen flex items-center justify-center">
+    <div class="hero-bg"></div>
+    <section class="hero-section relative z-10 flex items-center justify-center text-center pt-24 pb-16">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h1 id="typing-title" class="text-6xl font-extrabold mb-6 gradient-text leading-tight typing-cursor">
+                    Revolutionizing Recruitment with AI
+                </h1>
+                <p class="text-xl mb-10 text-gray-300 max-w-2xl mx-auto">
+                    Intelligent screening. Unbiased hiring. Transformative insights that connect top talent with innovative companies.
+                </p>
+                
+                <div class="flex justify-center items-center space-x-8 opacity-70">
+                    <div class="floating-element">
+                        <i class="fas fa-brain text-4xl text-purple-500"></i>
+                    </div>
+                    <div class="floating-element">
+                        <i class="fas fa-chart-line text-4xl text-blue-500"></i>
+                    </div>
+                    <div class="floating-element">
+                        <i class="fas fa-robot text-4xl text-green-500"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const titleElement = document.getElementById('typing-title');
+            const fullText = titleElement.textContent;
+            titleElement.textContent = '';
+
+            function typeText(text, index = 0) {
+                if (index < text.length) {
+                    titleElement.textContent += text.charAt(index);
+                    setTimeout(() => typeText(text, index + 1), 50);
+                }
+            }
+
+            typeText(fullText);
+        });
+    </script>
+</body>
+    
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section py-16 px-8">
+        <div class="container mx-auto">
+            <h2 class="text-3xl text-center mb-12 gradient-text">About TruthIQ</h2>
+            
+            <div class="max-w-4xl mx-auto text-center mb-12">
+                <p class="text-gray-300 text-xl">
+                    TruthIQ emerged from a critical challenge in modern recruitment: transforming a time-consuming, biased hiring process into an intelligent, fair, and efficient system. Our team of AI and HR technology experts developed an innovative platform that leverages advanced machine learning to revolutionize talent acquisition, ensuring companies find the best candidates while promoting workplace diversity and inclusion.
+                </p>
+            </div>
+    
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="feature-card p-6 rounded-lg glowing-border">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-accent-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                    <h3 class="text-xl mb-4 gradient-text">AI-Driven Innovation</h3>
+                    <p class="text-gray-300">Cutting-edge machine learning algorithms that continuously improve recruitment strategies</p>
+                </div>
+    
+                <div class="feature-card p-6 rounded-lg glowing-border">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-accent-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <h3 class="text-xl mb-4 gradient-text">Efficiency Optimization</h3>
+                    <p class="text-gray-300">Reducing recruitment time by 60% and eliminating manual screening bottlenecks</p>
+                </div>
+    
+                <div class="feature-card p-6 rounded-lg glowing-border">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-accent-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 class="text-xl mb-4 gradient-text">Inclusive Hiring</h3>
+                    <p class="text-gray-300">Proactively detecting and mitigating unconscious biases in recruitment processes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 px-8">
+        <div class="container mx-auto">
+            <h2 class="text-4xl text-center mb-16 gradient-text font-bold">Revolutionize Your Hiring Process</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Existing Cards -->
+                <div class="feature-card p-8 rounded-lg text-center glowing-border relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent to-accent-blue opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-accent-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 class="text-xl mb-4 gradient-text">AI Resume Screening</h3>
+                    <p class="text-gray-300">Advanced AI that learns and adapts to your hiring needs</p>
+                    <div class="absolute inset-0 border-2 border-transparent rounded-lg transition-all duration-300 group-hover:border-accent-blue"></div>
+                </div>
+
+                <div class="feature-card p-8 rounded-lg text-center glowing-border relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent to-accent-blue opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-accent-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                    </svg>
+                    <h3 class="text-xl mb-4 gradient-text">Bias Detection</h3>
+                    <p class="text-gray-300">Eliminate unconscious biases in recruitment</p>
+                    <div class="absolute inset-0 border-2 border-transparent rounded-lg transition-all duration-300 group-hover:border-accent-blue"></div>
+                </div>
+
+                <div class="feature-card p-8 rounded-lg text-center glowing-border relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent to-accent-blue opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-accent-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <h3 class="text-xl mb-4 gradient-text">Video Interview Analysis</h3>
+                    <p class="text-gray-300">Deep insights through advanced sentiment analysis</p>
+                    <div class="absolute inset-0 border-2 border-transparent rounded-lg transition-all duration-300 group-hover:border-accent-blue"></div>
+                </div>
+
+                <!-- New Feature Cards -->
+                <div class="feature-card p-8 rounded-lg text-center glowing-border relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 01-4.492-4.492l-.477-2.387a2 2 0 00-.547-1.022L6 5m8 8l-1-1M6 6l.196.509A6 6 0 007.66 9.233l.477 2.387a6 6 0 004.492 4.492l2.387.477c.345.069.69.114 1.022.147L14 15" />
+                    </svg>
+                    <h3 class="text-xl mb-4 gradient-text">Smart Candidate Matching</h3>
+                    <p class="text-gray-300">Advanced algorithm to match candidates with ideal roles</p>
+                    <div class="absolute inset-0 border-2 border-transparent rounded-lg transition-all duration-300 group-hover:border-purple-500"></div>
+                </div>
+
+                <div class="feature-card p-8 rounded-lg text-center glowing-border relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent to-green-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 class="text-xl mb-4 gradient-text">Predictive Performance Analytics</h3>
+                    <p class="text-gray-300">Forecast candidate success with machine learning insights</p>
+                    <div class="absolute inset-0 border-2 border-transparent rounded-lg transition-all duration-300 group-hover:border-green-500"></div>
+                </div>
+
+                <div class="feature-card p-8 rounded-lg text-center glowing-border relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent to-pink-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <h3 class="text-xl mb-4 gradient-text">Dynamic Skills Assessment</h3>
+                    <p class="text-gray-300">Real-time skill verification and talent evaluation</p>
+                    <div class="absolute inset-0 border-2 border-transparent rounded-lg transition-all duration-300 group-hover:border-pink-500"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="py-16 px-8 bg-opacity-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl text-center mb-16 gradient-text font-bold">Tailored AI Recruitment Solutions</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="feature-card p-8 rounded-lg text-center glowing-border bg-gray-800 shadow-2xl transform transition-all hover:scale-105">
+                    <div class="flex justify-center mb-6">
+                        <i class="fas fa-building text-5xl text-accent-blue mb-4"></i>
+                    </div>
+                    <h3 class="text-2xl mb-4 gradient-text">For Companies</h3>
+                    <p class="text-gray-300 mb-6">Revolutionize your hiring process with intelligent AI-powered recruitment solutions</p>
+                    
+                    <div class="feature-benefits px-4 py-4 rounded-lg mb-6">
+                        <ul class="text-left text-sm space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-blue mr-2"></i>
+                                Streamline hiring processes
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-blue mr-2"></i>
+                                Reduce unconscious bias
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-blue mr-2"></i>
+                                Advanced candidate matching
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-accent-blue mr-2"></i>
+                                Predictive performance analytics
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <button class="w-full glow-button bg-accent-blue text-primary-dark px-8 py-3 rounded-full font-bold hover:bg-blue-600 transition-all">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Get Started
+                    </button>
+                </div>
+
+                <div class="feature-card p-8 rounded-lg text-center glowing-border bg-gray-800 shadow-2xl transform transition-all hover:scale-105">
+                    <div class="flex justify-center mb-6">
+                        <i class="fas fa-users text-5xl text-green-500 mb-4"></i>
+                    </div>
+                    <h3 class="text-2xl mb-4 gradient-text">For Applicants</h3>
+                    <p class="text-gray-300 mb-6">Experience fair, transparent, and intelligent recruitment powered by cutting-edge AI</p>
+                    
+                    <div class="feature-benefits px-4 py-4 rounded-lg mb-6">
+                        <ul class="text-left text-sm space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                Unbiased evaluation
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                Skills-first approach
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                Real-time skill assessment
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                Comprehensive feedback
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <a href="login.html">
+                        <button class="w-full glow-button border-2 border-green-500 text-green-500 px-8 py-3 rounded-full font-bold hover:bg-green-500 hover:text-white transition-all">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Apply Now
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section testimonials">
+        <h2 class="section-heading">Testimonials</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="testimonial-avatar" alt="User Avatar">
+                <div class="testimonial-content">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <h3>John Doe</h3>
+                    <p class="testimonial-quote">"Amazing product that transformed our business strategy completely!"</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="testimonial-avatar" alt="User Avatar">
+                <div class="testimonial-content">
+                    <div class="testimonial-stars">★★★★☆</div>
+                    <h3>Sarah Miller</h3>
+                    <p class="testimonial-quote">"Intuitive interface and powerful insights. Highly recommended!"</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/men/85.jpg" class="testimonial-avatar" alt="User Avatar">
+                <div class="testimonial-content">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <h3>Michael Chen</h3>
+                    <p class="testimonial-quote">"Revolutionized our data analysis with incredible accuracy."</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/women/67.jpg" class="testimonial-avatar" alt="User Avatar">
+                <div class="testimonial-content">
+                    <div class="testimonial-stars">★★★★☆</div>
+                    <h3>Emily Rodriguez</h3>
+                    <p class="testimonial-quote">"Game-changing solution for our analytics needs!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contactus" class="section contact">
+        <form class="contact-form">
+            <h2 style="text-align: center; margin-bottom: 2rem; background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary)); -webkit-background-clip: text; color: transparent;">Contact Us</h2>
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message" class="form-input" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer">
+            <div>
+                <div class="footer-logo">TruthIQ</div>
+                <p class="footer-description">
+                    Transforming data into actionable insights with cutting-edge analytics solutions.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">LinkedIn</a>
+                    <a href="#" class="social-icon">Twitter</a>
+                    <a href="#" class="social-icon">GitHub</a>
+                </div>
+            </div>
+            <div>
+                <h3 class="footer-section-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="footer-section-title">Contact</h3>
+                <div class="contact-info">
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>✉️ support@truthiq.com</p>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.733248043236!2d-118.24532742400904!3d34.05217987241156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c7b85dea2a93%3A0x1ff47c3ceb7bb2d5!2sSanta%20Monica%2C%20CA%2C%20USA!5e0!3m2!1sen!2sus!4v1697036400000!5m2!1sen!2sus" 
+                        class="google-map" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2024 TruthIQ. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))
+                    .scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var cards = document.querySelectorAll('.feature-card');
+            
+            cards.forEach(function(card) {
+                card.addEventListener('mousemove', function(e) {
+                    var rect = this.getBoundingClientRect();
+                    var x = e.clientX - rect.left;
+                    var y = e.clientY - rect.top;
+                    
+                    this.style.setProperty('--mouse-x', x + 'px');
+                    this.style.setProperty('--mouse-y', y + 'px');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
