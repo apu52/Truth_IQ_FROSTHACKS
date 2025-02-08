@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Platform</title>
+    <!-- Code Editor -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="video-container">
+                <div class="timer">01:00:00</div>
+                <div class="video-wrapper">
+                    <video id="localVideo" autoplay muted></video>
+                </div>
+                <div class="controls">
+                    <button class="control-btn" id="cameraBtn" title="Toggle Camera">📷</button>
+                    <button class="control-btn" id="micBtn" title="Toggle Microphone">🎤</button>
+                    <button class="control-btn" id="screenShareBtn" title="Share Screen">🖥️</button>
+                </div>
+            </div>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai-message">Hello! I'm your AI interviewer. Let's begin with your technical interview. I'll be asking you coding questions and evaluating your responses.</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Type your message...">
+                    <button class="btn btn-primary" id="sendBtn">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="panel-header">
+                <div class="language-selector">
+                    <label>Language:</label>
+                    <select id="languageSelect">
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="java">Java</option>
+                        <option value="cpp">C++</option>
+                    </select>
+                </div>
+                <div class="timer-display">Time Remaining: <span id="questionTimer">05:00</span></div>
+            </div>
+            
+            <div class="question-container">
+                <h3>Current Question:</h3>
+                <p id="currentQuestion">Write a function that finds the maximum element in an array.</p>
+            </div>
+
+            <div class="code-container">
+                <textarea id="codeEditor"></textarea>
+            </div>
+
+            <div id="output"></div>
+
+            <div class="button-group">
+                <button class="btn btn-warning" id="runBtn">Run Code</button>
+                <button class="btn btn-success" id="submitBtn">Submit</button>
+                <button class="btn btn-primary" id="nextBtn">Next Question</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
