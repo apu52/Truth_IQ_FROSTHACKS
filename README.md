@@ -1,6 +1,6 @@
 # TruthIQ: AI-Powered Recruitment Platform
 
-![TruthIQ Banner](https://via.placeholder.com/1200x400?text=TruthIQ+AI+Recruitment)
+![TruthIQ Banner](./truthiq.png)
 
 ## 🚀 Introduction
 Recruitment processes often face inefficiencies, biases, and delays when screening candidates. **TruthIQ** is an AI-powered recruitment solution designed to streamline hiring, eliminate bias, and provide real-time insights for recruiters. Our platform enhances candidate assessment, salary benchmarking, and hiring campaign analytics.
